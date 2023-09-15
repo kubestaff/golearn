@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	opts := server.Options{}
+	opts := server.Options{Port: 4567}
 	// we create the simplified web server
 	s := server.NewServer(opts)
 
