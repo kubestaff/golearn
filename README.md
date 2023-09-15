@@ -1,3 +1,3 @@
 # A startup project for go learners
-Learning go
+Learning go is fun
  
