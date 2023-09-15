@@ -39,5 +39,6 @@ jobs:
           script: |
             cd golearn
             git reset --hard
+            git checkout infra
             git pull
             ./infra/update.sh ${{ steps.push.outputs.digest }}
