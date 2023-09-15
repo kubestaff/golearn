@@ -1,6 +1,6 @@
 version: '3.3'
 services:
-  chatgpt:
+  golearn:
     container_name: golearn
     image: kubestaff/golearn@${DOCKER_IMAGE_DIGEST}
     restart: always
