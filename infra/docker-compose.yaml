@@ -2,7 +2,7 @@ version: '3.3'
 services:
   golearn:
     build:
-      context: .
+      context: ../
       dockerfile: infra/Dockerfile
     restart: always
     ports:
