@@ -1,8 +1,9 @@
 version: '3.3'
 services:
   golearn:
-    container_name: golearn
-    image: kubestaff/golearn@${DOCKER_IMAGE_DIGEST}
+    build:
+      context: .
+      dockerfile: infra/Dockerfile
     restart: always
     ports:
       - "4567:4567"
