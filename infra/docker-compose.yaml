@@ -1,6 +1,8 @@
 version: '3.3'
 services:
   chatgpt:
-    container_name: chatgpt
-    image: kubestaff/golearn:infra
+    container_name: golearn
+    image: kubestaff/golearn@${DOCKER_DIGEST}
     restart: always
+    ports:
+      - "4567:4567"
