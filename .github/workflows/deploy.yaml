@@ -41,4 +41,5 @@ jobs:
             git reset --hard
             git checkout infra
             git pull
+            chmod +x ./infra/update.sh
             ./infra/update.sh ${{ steps.push.outputs.digest }}
