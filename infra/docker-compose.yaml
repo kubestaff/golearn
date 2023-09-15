@@ -1,0 +1,6 @@
+version: '3.3'
+services:
+  chatgpt:
+    container_name: chatgpt
+    image: kubestaff/golearn:infra
+    restart: always
