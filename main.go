@@ -1,6 +1,9 @@
 package main
 
-import "github.com/kubestaff/web-helper/server"
+import (
+	"github.com/kubestaff/golearn/user"
+	"github.com/kubestaff/web-helper/server"
+)
 
 func main() {
 	opts := server.Options{}
@@ -10,10 +13,22 @@ func main() {
 	// we close the server at the end
 	defer s.Stop()
 
-	variables := map[string]string{"%name%": "Andrey P"}
+	userProvider := user.Provider{}
 
-	// we output the contents of index.html
-	s.PrintFile("index.html", variables)
+	user, err := userProvider.GetCurrentUser()
+	if err != nil {
+		variables := map[string]string{
+			"%errorMessage%": err.Error(),
+		}
+		s.PrintFile("error.html", variables)
+	} else {
+		variables := map[string]string{
+			"%name%":            user.GetFullName(),
+			"%profile-picture%": user.GetProfilePic(),
+			"%profileColor%":    user.GetProfileColor(),
+		}
+		s.PrintFile("index.html", variables)
+	}
 
 	// we start the webserver don't put any code after it
 	s.Start()
