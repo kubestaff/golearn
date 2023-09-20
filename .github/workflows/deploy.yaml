@@ -1,7 +1,7 @@
 name: Deploy
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "infra" ]
   workflow_dispatch:
 jobs:
   build:
@@ -16,9 +16,9 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.PRIVATE_SSH_KEY }}
           script: |
+            rm -rf golearn
+            git clone --depth 1 https://github.com/kubestaff/golearn.git golearn
             cd golearn
-            git reset --hard
-            git checkout infra
-            git pull
+            git checkout main
             chmod +x ./infra/update.sh
             ./infra/update.sh
