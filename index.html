@@ -1,2 +1,32 @@
-<h1>%name%</h1>
-<img id="profile-picture" src="/static/profile-image.jpg" title="Profile Image" alt="Profile Image">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CV - %name%</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<div id="profile-header" style="background-color: %profileColor%;">
+    <img id="profile-image" title= "Profile Picture" src="/static/%profile-picture%"/>
+    <h1 id="name">%name%</h1>
+    <h2 id="job-title">Web Developer</h2>
+</div>
+
+<div id="main-content">
+    <div class="section">
+        <h2>Summary</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi suscipit libero ut viverra cursus. In hac habitasse platea dictumst.</p>
+    </div>
+
+    <div class="section">
+        <h2>Education</h2>
+        <p>Bachelor of Science in Computer Science, ABC University, 2015</p>
+    </div>
+
+    <div class="section">
+        <h2>Experience</h2>
+        <p>Web Developer, XYZ Company, 2016 - Present, Developed and maintained company websites, Collaborated with design and marketing teams to implement website improvements</p>
+    </div>
+</div>
+
+</body>
+</html>
