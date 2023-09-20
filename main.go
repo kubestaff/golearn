@@ -10,7 +10,7 @@ func main() {
 	// we close the server at the end
 	defer s.Stop()
 
-	variables := map[string]string{"%name%": "Yazid"}
+	variables := map[string]string{"%name%": "Yazid H"}
 
 	// we output the contents of index.html
 	s.PrintFile("index.html", variables)
