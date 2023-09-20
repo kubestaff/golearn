@@ -1,7 +1,7 @@
 package main
 
 import (
-"github.com/kubestaff/web-helper/server"
+	"github.com/kubestaff/golearn"
 )
 func main() {
 	opts := server.Options{}
