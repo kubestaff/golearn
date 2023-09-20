@@ -13,23 +13,28 @@ func main() {
 	// we close the server at the end
 	defer s.Stop()
 
+	s.Handle("/", HandleUser)
+
+	// we start the webserver don't put any code after it
+	s.Start()
+}
+
+func HandleUser(inputs map[string]string) (filename string, placeholders map[string]string) {
 	userProvider := user.Provider{}
 
-	user, err := userProvider.GetCurrentUser()
+	usr, err := userProvider.GetCurrentUser()
 	if err != nil {
 		variables := map[string]string{
 			"%errorMessage%": err.Error(),
 		}
-		s.PrintFile("error.html", variables)
-	} else {
-		variables := map[string]string{
-			"%name%":            user.GetFullName(),
-			"%profile-picture%": user.GetProfilePic(),
-			"%profileColor%":    user.GetProfileColor(),
-		}
-		s.PrintFile("index.html", variables)
+		return "error.html", variables
 	}
 
-	// we start the webserver don't put any code after it
-	s.Start()
+	variables := map[string]string{
+		"%name%":            usr.GetFullName(),
+		"%profile-picture%": usr.GetProfilePic(),
+		"%profileColor%":    usr.GetProfileColor(),
+	}
+
+	return "index.html", variables
 }
