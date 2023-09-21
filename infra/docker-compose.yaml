@@ -1,0 +1,9 @@
+version: '3.3'
+services:
+  golearn:
+    build:
+      context: ../
+      dockerfile: infra/Dockerfile
+    restart: always
+    ports:
+      - "4567:4567"

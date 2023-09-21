@@ -8,8 +8,8 @@ import (
 )
 
 const (
-	DefaultProfilePicture = "default.jpg"
-	DefaultColor          = "#ffffff"
+	DefaultProfilePic = "default-profile-pic.jpg"
+	DefaultColor      = "#000000"
 )
 
 type User struct {
@@ -21,9 +21,9 @@ type User struct {
 }
 
 func (u User) GetFullName() string {
-
 	fullName := fmt.Sprintf("%s %s", u.Name, u.Surname)
 	fullName = strings.TrimSpace(fullName)
+
 	return fullName
 }
 
@@ -31,13 +31,15 @@ func (u User) GetProfilePic() string {
 	if u.ProfilePic != "" {
 		return u.ProfilePic
 	}
-	return DefaultProfilePicture
+
+	return DefaultProfilePic
 }
 
 func (u User) GetProfileColor() string {
 	if u.ProfileColor != "" {
 		return u.ProfileColor
 	}
+
 	return DefaultColor
 }
 
@@ -49,14 +51,13 @@ func (u Users) GetRandomUser() User {
 	}
 
 	s := rand.NewSource(time.Now().Unix())
-	r := rand.New(s) // initialize local pseudorandom generator
+	r := rand.New(s)
 	randIndex := r.Intn(len(u))
 
 	return u[randIndex]
 }
 
-func (u []string) GetExperience() string {
-	fullSummary := fmt.Sprintf("%s", u.Experience)
-	fullSummary = strings.Join(fullSummary)
+func (u User) GetExperience() string {
+	fullSummary := strings.Join(u.Experience, ",")
 	return fullSummary
 }
