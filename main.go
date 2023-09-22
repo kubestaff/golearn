@@ -1,19 +1,19 @@
 package main
 
 import (
-"github.com/kubestaff/golearn/user"
-"github.com/kubestaff/web-helper/server"
+	"github.com/kubestaff/golearn/user"
+	"github.com/kubestaff/web-helper/server"
 )
 
 func main() {
-opts := server.Options{Port: 4567}
-// we create the simplified web server
-s := server.NewServer(opts)
+	opts := server.Options{Port: 4567}
+	// we create the simplified web server
+	s := server.NewServer(opts)
 
-// we close the server at the end
-defer s.Stop()
+	// we close the server at the end
+	defer s.Stop()
 
-userProvider := user.Provider{}
+	userProvider := user.Provider{}
 
 	usr, err := userProvider.GetCurrentUser()
 	if err != nil {
@@ -32,10 +32,9 @@ userProvider := user.Provider{}
 		}
 
 		// we output the contents of index.html
-		s.PrintFile( "/", "index.html", variables)
+		s.PrintFile("/", "index.html", variables)
 	}
 
-// we start the webserver don't put any code after it
-s.Start()
+	// we start the webserver don't put any code after it
+	s.Start()
 }
-	
