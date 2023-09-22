@@ -32,10 +32,9 @@ func main() {
 		}
 
 		// we output the contents of index.html
-		s.PrintFile( "/", "index.html", variables)
+		s.PrintFile("/", "index.html", variables)
 	}
 
 	// we start the webserver don't put any code after it
 	s.Start()
 }
-	
