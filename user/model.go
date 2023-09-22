@@ -10,8 +10,6 @@ import (
 const (
 	DefaultProfilePic = "default-profile-pic.jpg"
 	DefaultColor      = "#000000"
-	DefaultProfilePic = "default-profile-pic.jpg"
-	DefaultColor      = "#000000"
 )
 
 type User struct {
@@ -28,7 +26,6 @@ func (u User) GetFullName() string {
 	fullName := fmt.Sprintf("%s %s", u.Name, u.Surname)
 	fullName = strings.TrimSpace(fullName)
 
-
 	return fullName
 }
 
@@ -39,14 +36,12 @@ func (u User) GetProfilePic() string {
 
 	return DefaultProfilePic
 
-	return DefaultProfilePic
 }
 
 func (u User) GetProfileColor() string {
 	if u.ProfileColor != "" {
 		return u.ProfileColor
 	}
-
 
 	return DefaultColor
 }
@@ -59,7 +54,6 @@ func (u Users) GetRandomUser() User {
 	}
 
 	s := rand.NewSource(time.Now().Unix())
-	r := rand.New(s)
 	r := rand.New(s)
 	randIndex := r.Intn(len(u))
 
