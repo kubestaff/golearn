@@ -1,2 +1,4 @@
 github.com/kubestaff/web-helper v0.0.3 h1:YXZu87r7slZzy+Uj0LokAl5T/NpkWuDOJ1i8ibYXjOk=
 github.com/kubestaff/web-helper v0.0.3/go.mod h1:5baz95gKrAqGmTEx52DjtE+MJNxqk8KEsstzQQUvRe0=
+github.com/kubestaff/web-helper v0.0.5 h1:HUumGX+K1z2B/DWN8H6DWPrsnPY1GDCqgyfJuq3tQSs=
+github.com/kubestaff/web-helper v0.0.5/go.mod h1:5baz95gKrAqGmTEx52DjtE+MJNxqk8KEsstzQQUvRe0=
