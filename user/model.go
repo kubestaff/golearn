@@ -17,7 +17,9 @@ type User struct {
 	Surname      string
 	ProfilePic   string
 	ProfileColor string
-	Experience []string
+	Experience   []string
+	Summary      []string
+	Education    []string
 }
 
 func (u User) GetFullName() string {
@@ -33,6 +35,7 @@ func (u User) GetProfilePic() string {
 	}
 
 	return DefaultProfilePic
+
 }
 
 func (u User) GetProfileColor() string {
@@ -55,4 +58,19 @@ func (u Users) GetRandomUser() User {
 	randIndex := r.Intn(len(u))
 
 	return u[randIndex]
+}
+
+func (u User) GetExperience() string {
+	fullExperience := strings.Join(u.Experience, ",")
+	return fullExperience
+}
+
+func (u User) GetSummary() string {
+	fullSummary := strings.Join(u.Summary, ",")
+	return fullSummary
+}
+
+func (u User) GetEducation() string {
+	fullEducation := strings.Join(u.Education, ",")
+	return fullEducation
 }

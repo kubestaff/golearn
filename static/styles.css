@@ -5,7 +5,8 @@ body {
 }
 
 #profile-header {
-    color: #fff;
+    background-color: #337df5;
+    color: #ffffff;
     padding: 20px;
     text-align: center;
 }
