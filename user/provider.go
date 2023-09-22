@@ -86,8 +86,3 @@ func (p Provider) GetCurrentUser() (User, error) {
 			Summary:    []string{"Web Developer for Amazon. Senior Role been at Amazon for 5 years."},
 			Education:  []string{"University"},
 		},
-	}
-	user := users.GetRandomUser()
-
-	return user, nil
-}
