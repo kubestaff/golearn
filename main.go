@@ -24,17 +24,19 @@ func main() {
 		s.PrintFile("error.html", variables)
 	} else {
 		variables := map[string]string{
-			"%name%": user.GetFullName(),
+			"%name%":            user.GetFullName(),
 			"%profile-picture%": user.ProfilePic,
-			"%profileColor%": user.GetProfileColor(),
-	}	
+			"%profileColor%":    user.GetProfileColor(),
+			"%experience%":      user.GetExperience(),
+			"%summary%":         user.GetSummary(),
+			"%education%":       user.GetEducation(),
+		}
 
-	
-	// we output the contents of index.html
-	s.PrintFile("index.html", variables)
+		// we output the contents of index.html
+		s.PrintFile("index.html", variables)
 
-	// we start the webserver don't put any code after it
-	s.Start()
-}
- 
+		// we start the webserver don't put any code after it
+		s.Start()
+	}
+
 }
