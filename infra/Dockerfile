@@ -18,6 +18,6 @@ USER app:app
 
 COPY --from=build /app/golearn /app/golearn
 COPY --from=build /app/static /app/static
-COPY --from=build /app/index.html /app/index.html
+COPY --from=build /app/html /app/html
 
 ENTRYPOINT ["/app/golearn"]
