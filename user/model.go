@@ -2,9 +2,7 @@ package user
 
 import (
 	"fmt"
-	"math/rand"
 	"strings"
-	"time"
 )
 
 const (
@@ -46,19 +44,7 @@ func (u User) GetProfileColor() string {
 	return DefaultColor
 }
 
-type Users []User
-
-func (u Users) GetRandomUser() User {
-	if len(u) == 0 {
-		return User{}
-	}
-
-	s := rand.NewSource(time.Now().Unix())
-	r := rand.New(s)
-	randIndex := r.Intn(len(u))
-
-	return u[randIndex]
-}
+type Users map[string]User
 
 func (u User) GetExperience() string {
 	fullExperience := strings.Join(u.Experience, ",")

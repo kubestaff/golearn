@@ -94,3 +94,11 @@ body {
 .section p {
     margin-bottom: 5px;
 }
+
+h1 {
+    text-align: center;
+}
+
+p#navigation-bar {
+    text-align: center;
+}
