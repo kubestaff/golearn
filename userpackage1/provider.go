@@ -2,24 +2,6 @@ package userpackage1
 
 
 
-type User struct {
-    Name          string
-    Age           int
-    Alias         string
-    GithubUsername string
-    GithubProfileLink string
-    Image         string
-    Email         string
-    Role          string
-    IsActive      bool
-    Password      string
-    Verification  string
-    Phone         string
-    CreationDate  string
-    PersonalInfo  string
-    CareerInfo    string
-}
-
 type Provider struct {
     filename string
 }

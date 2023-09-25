@@ -1,8 +1,5 @@
 package userinterface
 
-import (
-
-)
 
 type User struct {
     Name          string
