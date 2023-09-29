@@ -16,6 +16,7 @@ func main() {
 
 	s.Handle("/", home.Handle)
 	s.Handle("/user", user.Handle)
+	s.Handle("/changeuser", user.HandleChange)
 
 	// we start the webserver don't put any code after it
 	s.Start()
