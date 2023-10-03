@@ -74,3 +74,13 @@
   .bd-mode-toggle .dropdown-menu .active .bi {
     display: block !important;
   }
+
+  #bd-theme {
+    background-color: #0bd93d;
+    border-color: aliceblue;
+  }
+
+  #main-call-button {
+    background-color: #0bd93d;
+    border-color: aliceblue;
+  }
