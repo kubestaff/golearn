@@ -19,5 +19,7 @@ USER app:app
 COPY --from=build /app/golearn /app/golearn
 COPY --from=build /app/static /app/static
 COPY --from=build /app/html /app/html
+COPY --from=build /app/golearn/usersDatabase.json /app/golearn/usersDatabase.json
+COPY --from=build /app/golearn/videosDatabase.json /app/golearn/videosDatabase.json
 
 ENTRYPOINT ["/app/golearn"]
