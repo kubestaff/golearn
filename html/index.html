@@ -4,11 +4,44 @@
     <title>Main Page</title>
     <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/static/styles.css?v=1">
+    <title>Refresh Videos with Random Images</title>
 </head>
 <body>
     <h1>Main page</h1>
     <p id="navigation-bar">
         <a href="/user?id=adam123">User</a>
     </p>
+
+    <button id="mainCallToAction">Main call to action</button>
+    <div class="video-item">
+        <img class="video-image" src="https://picsum.photos/200/300" alt="Video Image 1">
+        
+    </div>
+    <div class="video-item">
+        <img class="video-image" src="https://picsum.photos/200/300" alt="Video Image 2">
+        
+    </div>
+    
+
+    <script>
+        
+        function getRandomImageURL() {
+            const randomWidth = Math.floor(Math.random() * 800) + 200; // Random width between 200 and 999
+            const randomHeight = Math.floor(Math.random() * 600) + 300; // Random height between 300 and 899
+            return `https://picsum.photos/${randomWidth}/${randomHeight}`;
+        }
+
+        // Function to refresh all video item images with random images
+        function refreshVideoItems() {
+            const videoImages = document.querySelectorAll('.video-image');
+            videoImages.forEach((img) => {
+                img.src = getRandomImageURL();
+            });
+        }
+
+        
+        const mainCallToActionBtn = document.getElementById('mainCallToAction');
+        mainCallToActionBtn.addEventListener('click', refreshVideoItems);
+    </script>
 </body>
 </html>
