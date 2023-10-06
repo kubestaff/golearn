@@ -68,8 +68,6 @@
             </li>
         </ul>
     </div>
-
-
     <header data-bs-theme="dark">
         <div class="collapse text-bg-dark" id="navbarHeader">
             <div class="container">
@@ -81,11 +79,13 @@
                             tidbits. Then, link them off to some social networking sites or contact information.</p>
                     </div>
                     <div class="col-sm-4 offset-md-1 py-4">
-                        <h4>Contact</h4>
+                        <h4>Navigation</h4>
                         <ul class="list-unstyled">
                             <li><a href="#" class="text-white">Follow on Twitter</a></li>
                             <li><a href="#" class="text-white">Like on Facebook</a></li>
                             <li><a href="#" class="text-white">Email me</a></li>
+                            <li><a href="#" class="text-white" id="settings-link">Settings</a></li>
+                            <li><a href="#" class="text-white" id="videos-link">Videos</a></li>
                         </ul>
                     </div>
                 </div>
@@ -109,26 +109,10 @@
             </div>
         </div>
     </header>
-
     <main>
-
-        <section class="py-5 text-center container">
-            <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">Album example</h1>
-                    <p class="lead text-body-secondary">Something short and leading about the collection below—its
-                        contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply
-                        skip over it entirely.</p>
-                    <p>
-                        <a href="#" class="btn btn-primary my-2" id="main-call-button">Main call to action</a>
-                        <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <div class="album py-5 bg-body-tertiary">
+        <div class="album py-5 bg-body-tertiary" id="videos-list-container">
             <div class="container">
+                <h1>Videos list</h1>
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="videos-list">
                     <template id="video-item">
                         <div class="col">
@@ -146,13 +130,32 @@
                                 </div>
                             </div>
                         </div>
-                      </template>
+                    </template>
                 </div>
             </div>
         </div>
-
+        <div class="py-5 bg-body-tertiary d-none" id="settings-list-container">
+            <div class="container">
+                <h1>Settings</h1>
+                <form id="setting-form">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
     </main>
-
     <footer class="text-body-secondary py-5">
         <div class="container">
             <p class="float-end mb-1">
@@ -164,7 +167,7 @@
         </div>
     </footer>
     <script src="/static/js/bootstrap.bundle.min.js"></script>
-    <script src="/static/js/main.js?version=0.0.1"></script>
+    <script src="/static/js/main.js?version=0.0.2"></script>
 </body>
 
 </html>
