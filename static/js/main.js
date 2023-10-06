@@ -23,7 +23,29 @@ document.addEventListener("DOMContentLoaded", function(){
         }).catch(error => {
             console.error(error)
         })
+
+        let videosLink = document.getElementById("videos-link")
+        videosLink.addEventListener("click", onVideosLinkClick)
+
+        let settingsLink = document.getElementById("settings-link")
+        settingsLink.addEventListener("click", onSettingsLinkClick)
 })
+
+function onVideosLinkClick() {
+    let videosListContainer = document.getElementById("videos-list-container")
+    videosListContainer.classList.remove("d-none")
+
+    let settingsListContainer = document.getElementById("settings-list-container")
+    settingsListContainer.classList.add("d-none")
+}
+
+function onSettingsLinkClick() {
+    let videosListContainer = document.getElementById("videos-list-container")
+    videosListContainer.classList.add("d-none")
+
+    let settingsListContainer = document.getElementById("settings-list-container")
+    settingsListContainer.classList.remove("d-none")
+}
 
 function getDurationText(durationSeconds) {
     const secondsInMinute = 60
