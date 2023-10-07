@@ -1,16 +1,12 @@
 package user
 
-import (
-	"fmt"
+import "fmt"
 
-	"github.com/kubestaff/web-helper/server"
-)
-
-func Handle(inputs server.Input) (filename string, placeholders map[string]string) {
+func Handle(inputs map[string]string) (filename string, placeholders map[string]string) {
 	userRepository := NewRepository()
 
-	userId := inputs.Get("id")
-	if userId == "" {
+	userId, ok := inputs["id"]
+	if !ok {
 		variables := map[string]string{
 			"%errorMessage%": "User not found",
 		}
@@ -38,13 +34,13 @@ func Handle(inputs server.Input) (filename string, placeholders map[string]strin
 	}
 }
 
-func HandleChange(inputs server.Input) (filename string, placeholders map[string]string) {
+func HandleChange(inputs map[string]string) (filename string, placeholders map[string]string) {
 	userRepository := NewRepository()
-	id := inputs.Get("id")
+	id, ok := inputs["id"]
 
 	message := ""
 
-	if id != "" {
+	if ok {
 		err := handleUpdate(userRepository, id, inputs)
 		if err != nil {
 			variables := map[string]string{
@@ -72,27 +68,27 @@ func HandleChange(inputs server.Input) (filename string, placeholders map[string
 	return "html/userChange.html", variables
 }
 
-func handleCreate(repo Repository, inputs server.Input) (id string, err error) {
+func handleCreate(repo Repository, inputs map[string]string) (id string, err error) {
 	createdUser := createUserFromInput(inputs)
 
 	return repo.CreateUser(createdUser)
 }
 
-func handleUpdate(repo Repository, id string, inputs server.Input) (err error) {
+func handleUpdate(repo Repository, id string, inputs map[string]string) (err error) {
 	updatedUser := createUserFromInput(inputs)
 
 	return repo.UpdateUser(id, updatedUser)
 }
 
-func createUserFromInput(inputs server.Input) User {
+func createUserFromInput(inputs map[string]string) User {
 	usr := User{}
-	surname := inputs.Get("surname")
-	if surname != "" {
+	surname, ok := inputs["surname"]
+	if ok && surname != "" {
 		usr.Surname = surname
 	}
 
-	name := inputs.Get("name")
-	if name != "" {
+	name, ok := inputs["name"]
+	if ok {
 		usr.Name = name
 	}
 
