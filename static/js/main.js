@@ -10,10 +10,10 @@ document.addEventListener("DOMContentLoaded", function(){
                 const videoItem = videoTemplate.content.cloneNode(true)
 
                 const img = videoItem.querySelector("img")
-                img.src =  "/static/img/" + video.Image
+                img.src = video.ImageFilePath
 
                 const cardText = videoItem.querySelector(".card-text")
-                cardText.textContent = video.Text
+                cardText.textContent = video.Description
                 
                 const durationBlock = videoItem.querySelector(".video-duration")
                 durationBlock.textContent = getDurationText(video.DurationSeconds)
@@ -23,7 +23,29 @@ document.addEventListener("DOMContentLoaded", function(){
         }).catch(error => {
             console.error(error)
         })
+
+        let videosLink = document.getElementById("videos-link")
+        videosLink.addEventListener("click", onVideosLinkClick)
+
+        let settingsLink = document.getElementById("settings-link")
+        settingsLink.addEventListener("click", onSettingsLinkClick)
 })
+
+function onVideosLinkClick() {
+    let videosListContainer = document.getElementById("videos-list-container")
+    videosListContainer.classList.remove("d-none")
+
+    let settingsListContainer = document.getElementById("settings-list-container")
+    settingsListContainer.classList.add("d-none")
+}
+
+function onSettingsLinkClick() {
+    let videosListContainer = document.getElementById("videos-list-container")
+    videosListContainer.classList.add("d-none")
+
+    let settingsListContainer = document.getElementById("settings-list-container")
+    settingsListContainer.classList.remove("d-none")
+}
 
 function getDurationText(durationSeconds) {
     const secondsInMinute = 60
