@@ -10,10 +10,10 @@ document.addEventListener("DOMContentLoaded", function(){
                 const videoItem = videoTemplate.content.cloneNode(true)
 
                 const img = videoItem.querySelector("img")
-                img.src =  "/static/img/" + video.Image
+                img.src = video.ImageFilePath
 
                 const cardText = videoItem.querySelector(".card-text")
-                cardText.textContent = video.Text
+                cardText.textContent = video.Description
                 
                 const durationBlock = videoItem.querySelector(".video-duration")
                 durationBlock.textContent = getDurationText(video.DurationSeconds)

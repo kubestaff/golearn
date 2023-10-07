@@ -1,12 +1,13 @@
 package video
 
 type Video struct {
-	authorId string
-	videoFilePath string
-	imageFilePath int
-	title string
-	description string
-	creationTime string 
-	format string
-	isActive bool
+	AuthorId string
+	VideoFilePath string
+	ImageFilePath string
+	Title string
+	Description string
+	CreationTime string 
+	Format string
+	IsActive bool
+	DurationSeconds int
 }
