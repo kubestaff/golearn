@@ -1,1 +1,146 @@
-{"adam123":{"Name":"Adam","Surname":"Loqwick","ProfilePic":"user5.jpeg","ProfileColor":"#0f0f0f","Experience":["Web Developer, XYZ Company, 2016 - Present"],"Summary":["Junior Role in DHL. Have been coding for 1 year"],"Education":["Collage"]},"ariana123":{"Name":"Ariana","Surname":"Grande","ProfilePic":"user6.jpeg","ProfileColor":"#f1f1f1","Experience":["Developer, Instructor"],"Summary":["Been developing for 8 years, main language is Golang."],"Education":["Secondary School"]},"bart":{"Name":"Bart","Surname":"Simpson","ProfilePic":"","ProfileColor":"","Experience":["Office 365, Managment"],"Summary":["Managed the biggest parties in Germany. Been managing people sice I was a small boy."],"Education":["High School"]},"corky":{"Name":"Kariana","Surname":"Corky","ProfilePic":"user2.jpg","ProfileColor":"#ffffff","Experience":["Pilot"],"Summary":["Been flying for 12 years. Aprox. 4500h flown with the A320."],"Education":["University"]},"john":{"Name":"John","Surname":"Doe","ProfilePic":"","ProfileColor":"","Experience":["Managment, Teaching, Coding"],"Summary":["This person is a dedicated environmentalist who spends their free time volunteering for conservation organizations, enjoys hiking in national parks, and practices sustainable living in their everyday life."],"Education":["Collage"]},"josh":{"Name":"Josh","Surname":"Smith","ProfilePic":"","ProfileColor":"","Experience":["GunMan, Driving"],"Summary":["Person who is very talented driver. Drove in F2"],"Education":["University"]},"olypmic":{"Name":"John","Surname":"","ProfilePic":"","ProfileColor":"","Experience":null,"Summary":null,"Education":null},"oman":{"Name":"Oman","Surname":"Osas","ProfilePic":"user4.jpeg","ProfileColor":"#454a4d","Experience":["Developed and maintained company websites"],"Summary":["Junior Role in Amazon. Have been coding for 2 year"],"Education":["Collage"]},"orkey":{"Name":"Mariana","Surname":"Orkey","ProfilePic":"user3.jpeg","ProfileColor":"#e8e6e3","Experience":["Interior Designer"],"Summary":["Designed 100+ houses across the US"],"Education":["High School"]},"smith":{"Name":"Adam","Surname":"Smith","ProfilePic":"user1.png","ProfileColor":"#004daa","Experience":["Office 365, Coding, Piloting"],"Summary":["Been coding for 2 years and just started my pilot licience"],"Education":["University"]}}
+{
+    "adam123": {
+        "Name": "Adam",
+        "Surname": "Loqwick",
+        "ProfilePic": "static/img/user5.jpeg",
+        "ProfileColor": "#0f0f0f",
+        "Experience": [
+            "Web Developer, XYZ Company, 2016 - Present"
+        ],
+        "Summary": [
+            "Junior Role in DHL. Have been coding for 1 year"
+        ],
+        "Education": [
+            "Collage"
+        ]
+    },
+    "ariana123": {
+        "Name": "Ariana",
+        "Surname": "Grande",
+        "ProfilePic": "static/img/user6.jpeg",
+        "ProfileColor": "#f1f1f1",
+        "Experience": [
+            "Developer, Instructor"
+        ],
+        "Summary": [
+            "Been developing for 8 years, main language is Golang."
+        ],
+        "Education": [
+            "Secondary School"
+        ]
+    },
+    "bart": {
+        "Name": "Bart",
+        "Surname": "Simpson",
+        "ProfilePic": "",
+        "ProfileColor": "",
+        "Experience": [
+            "Office 365, Managment"
+        ],
+        "Summary": [
+            "Managed the biggest parties in Germany. Been managing people sice I was a small boy."
+        ],
+        "Education": [
+            "High School"
+        ]
+    },
+    "corky": {
+        "Name": "Kariana",
+        "Surname": "Corky",
+        "ProfilePic": "static/img/user2.jpg",
+        "ProfileColor": "#ffffff",
+        "Experience": [
+            "Pilot"
+        ],
+        "Summary": [
+            "Been flying for 12 years. Aprox. 4500h flown with the A320."
+        ],
+        "Education": [
+            "University"
+        ]
+    },
+    "john": {
+        "Name": "John",
+        "Surname": "Doe",
+        "ProfilePic": "",
+        "ProfileColor": "",
+        "Experience": [
+            "Managment, Teaching, Coding"
+        ],
+        "Summary": [
+            "This person is a dedicated environmentalist who spends their free time volunteering for conservation organizations, enjoys hiking in national parks, and practices sustainable living in their everyday life."
+        ],
+        "Education": [
+            "Collage"
+        ]
+    },
+    "josh": {
+        "Name": "Josh",
+        "Surname": "Smith",
+        "ProfilePic": "",
+        "ProfileColor": "",
+        "Experience": [
+            "GunMan, Driving"
+        ],
+        "Summary": [
+            "Person who is very talented driver. Drove in F2"
+        ],
+        "Education": [
+            "University"
+        ]
+    },
+    "olypmic": {
+        "Name": "John",
+        "Surname": "",
+        "ProfilePic": "",
+        "ProfileColor": "",
+        "Experience": null,
+        "Summary": null,
+        "Education": null
+    },
+    "oman": {
+        "Name": "Oman",
+        "Surname": "Osas",
+        "ProfilePic": "static/img/user4.jpeg",
+        "ProfileColor": "#454a4d",
+        "Experience": [
+            "Developed and maintained company websites"
+        ],
+        "Summary": [
+            "Junior Role in Amazon. Have been coding for 2 year"
+        ],
+        "Education": [
+            "Collage"
+        ]
+    },
+    "orkey": {
+        "Name": "Mariana",
+        "Surname": "Orkey",
+        "ProfilePic": "static/img/user3.jpeg",
+        "ProfileColor": "#e8e6e3",
+        "Experience": [
+            "Interior Designer"
+        ],
+        "Summary": [
+            "Designed 100+ houses across the US"
+        ],
+        "Education": [
+            "High School"
+        ]
+    },
+    "smith": {
+        "Name": "Adam",
+        "Surname": "Smith",
+        "ProfilePic": "static/img/user1.png",
+        "ProfileColor": "#004daa",
+        "Experience": [
+            "Office 365, Coding, Piloting"
+        ],
+        "Summary": [
+            "Been coding for 2 years and just started my pilot licience"
+        ],
+        "Education": [
+            "University"
+        ]
+    }
+}
