@@ -9,7 +9,7 @@ func (p Provider) FindUser(id string) (User, error) {
 		"123": User{
 			Name:         "Adam",
 			Surname:      "Smith",
-			ProfilePic:   "user1.png",
+			ProfilePic:   "static/img/user1.png",
 			ProfileColor: "#004daa",
 			Experience:   []string{"Office 365, Coding, Piloting"},
 			Summary:      []string{"Been coding for 2 years and just started my pilot licience"},
@@ -18,7 +18,7 @@ func (p Provider) FindUser(id string) (User, error) {
 		"567": User{
 			Name:         "Kariana",
 			Surname:      "Corky",
-			ProfilePic:   "user2.jpg",
+			ProfilePic:   "static/img/user2.jpeg",
 			ProfileColor: "#ffffff",
 			Experience:   []string{"Pilot"},
 			Summary:      []string{"Been flying for 12 years. Aprox. 4500h flown with the A320."},
@@ -27,7 +27,7 @@ func (p Provider) FindUser(id string) (User, error) {
 		"orkey": User{
 			Name:         "Mariana",
 			Surname:      "Orkey",
-			ProfilePic:   "user3.jpeg",
+			ProfilePic:   "static/img/user3.jpg",
 			ProfileColor: "#e8e6e3",
 			Experience:   []string{"Interior Designer"},
 			Summary:      []string{"Designed 100+ houses across the US"},
@@ -36,7 +36,7 @@ func (p Provider) FindUser(id string) (User, error) {
 		"oman": User{
 			Name:         "Oman",
 			Surname:      "Osas",
-			ProfilePic:   "user4.jpeg",
+			ProfilePic:   "static/img/user4.png",
 			ProfileColor: "#454a4d",
 			Experience:   []string{"Developed and maintained company websites"},
 			Summary:      []string{"Junior Role in Amazon. Have been coding for 2 year"},
@@ -45,7 +45,7 @@ func (p Provider) FindUser(id string) (User, error) {
 		"adam123": User{
 			Name:         "Adam",
 			Surname:      "Loqwick",
-			ProfilePic:   "user5.jpeg",
+			ProfilePic:   "static/img/user5.jpeg",
 			ProfileColor: "#0f0f0f",
 			Experience:   []string{"Web Developer, XYZ Company, 2016 - Present"},
 			Summary:      []string{"Junior Role in DHL. Have been coding for 1 year"},
@@ -54,7 +54,7 @@ func (p Provider) FindUser(id string) (User, error) {
 		"ariana123": User{
 			Name:         "Ariana",
 			Surname:      "Grande",
-			ProfilePic:   "user6.jpeg",
+			ProfilePic:   "static/img/user7.jpg",
 			ProfileColor: "#f1f1f1",
 			Experience:   []string{"Developer, Instructor"},
 			Summary:      []string{"Been developing for 8 years, main language is Golang."},
