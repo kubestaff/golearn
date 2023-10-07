@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	DefaultProfilePic = "static/img/default-profile-pic.jpg"
+	DefaultProfilePic = "default-profile-pic.jpg"
 	DefaultColor      = "#000000"
 )
 
