@@ -1,12 +1,16 @@
 package user
 
-import "fmt"
+import (
+	"fmt"
 
-func Handle(inputs map[string]string) (filename string, placeholders map[string]string) {
+	"github.com/kubestaff/web-helper/server"
+)
+
+func Handle(inputs server.Input) (filename string, placeholders map[string]string) {
 	userRepository := NewRepository()
 
-	userId, ok := inputs["id"]
-	if !ok {
+	userId := inputs.Get("id")
+	if userId == "" {
 		variables := map[string]string{
 			"%errorMessage%": "User not found",
 		}
@@ -34,13 +38,13 @@ func Handle(inputs map[string]string) (filename string, placeholders map[string]
 	}
 }
 
-func HandleChange(inputs map[string]string) (filename string, placeholders map[string]string) {
+func HandleChange(inputs server.Input) (filename string, placeholders map[string]string) {
 	userRepository := NewRepository()
-	id, ok := inputs["id"]
+	id := inputs.Get("id")
 
 	message := ""
 
-	if ok {
+	if id != "" {
 		err := handleUpdate(userRepository, id, inputs)
 		if err != nil {
 			variables := map[string]string{
@@ -68,27 +72,27 @@ func HandleChange(inputs map[string]string) (filename string, placeholders map[s
 	return "html/userChange.html", variables
 }
 
-func handleCreate(repo Repository, inputs map[string]string) (id string, err error) {
+func handleCreate(repo Repository, inputs server.Input) (id string, err error) {
 	createdUser := createUserFromInput(inputs)
 
 	return repo.CreateUser(createdUser)
 }
 
-func handleUpdate(repo Repository, id string, inputs map[string]string) (err error) {
+func handleUpdate(repo Repository, id string, inputs server.Input) (err error) {
 	updatedUser := createUserFromInput(inputs)
 
 	return repo.UpdateUser(id, updatedUser)
 }
 
-func createUserFromInput(inputs map[string]string) User {
+func createUserFromInput(inputs server.Input) User {
 	usr := User{}
-	surname, ok := inputs["surname"]
-	if ok && surname != "" {
+	surname := inputs.Get("surname")
+	if surname != "" {
 		usr.Surname = surname
 	}
 
-	name, ok := inputs["name"]
-	if ok {
+	name := inputs.Get("name")
+	if name != "" {
 		usr.Name = name
 	}
 
