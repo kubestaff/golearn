@@ -31,21 +31,63 @@ document.addEventListener("DOMContentLoaded", function(){
         settingsLink.addEventListener("click", onSettingsLinkClick)
 })
 
-function onVideosLinkClick() {
-    let videosListContainer = document.getElementById("videos-list-container")
-    videosListContainer.classList.remove("d-none")
 
-    let settingsListContainer = document.getElementById("settings-list-container")
-    settingsListContainer.classList.add("d-none")
-}
 
-function onSettingsLinkClick() {
-    let videosListContainer = document.getElementById("videos-list-container")
-    videosListContainer.classList.add("d-none")
+    function refreshImages() { // This function refreshes the images in the video container 
+        const imageElements = document.querySelectorAll('#videos-list img');
 
-    let settingsListContainer = document.getElementById("settings-list-container")
-    settingsListContainer.classList.remove("d-none")
-}
+        // Iterate through each image element and update its source attribute
+        imageElements.forEach((imgElement) => {
+            // Iterates over all images (using the for.each) and generates a random image URL using picsum.photos.  https://www.w3schools.com/js/js_callback.asp
+            const randomImageUrl = `https://picsum.photos/${imgElement.width}/${imgElement.height}?random=${Math.random()}`; 
+
+            // math random used to generate new pic every time - https://www.w3schools.com/js/js_random.asp
+            
+            // Set the new image source. .src is short for source from url https://www.w3schools.com/jsref/prop_script_src.asp
+            imgElement.src = randomImageUrl;
+        });
+    }
+
+    
+    refreshImages(); // refreshes images when button is pressed 
+
+    function onVideosLinkClick() { 
+        let videosListContainer = document.getElementById("videos-list-container") //document.get used to get HTML element from the video list container 
+        videosListContainer.classList.remove("d-none") // d none used to hide element 
+
+        let settingsListContainer = document.getElementById("settings-list-container") 
+        settingsListContainer.classList.add("d-none")
+
+        
+        refreshImages(); // refreshes images when button is pressed 
+    }
+
+    function onSettingsLinkClick() {
+        let videosListContainer = document.getElementById("videos-list-container")
+        videosListContainer.classList.add("d-none")
+
+        let settingsListContainer = document.getElementById("settings-list-container")
+        settingsListContainer.classList.remove("d-none")
+    }
+
+    
+    const refreshButton = document.getElementById("main-call-button"); // main-call-button is the button identifier 
+
+    
+    refreshButton.addEventListener("click", refreshImages); // button that calls the refreshImages function
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function getDurationText(durationSeconds) {
     const secondsInMinute = 60
@@ -76,3 +118,4 @@ function getDurationText(durationSeconds) {
 function joinText(textItems) {
     return textItems.join(" ");
 }
+
