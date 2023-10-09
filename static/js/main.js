@@ -110,9 +110,17 @@ function readSettings() {
 function writeSettings() {
   const form = document.getElementById("setting-form");
   const data = new FormData(form);
+  const plainFormData = Object.fromEntries(data.entries());
+  plainFormData.VideosCountOnMainPage = -1
+  const formDataJsonString = JSON.stringify(plainFormData);
+
   fetch("/persist-settings", {
-    body: data,
-    method: "POST"
+    body: formDataJsonString,
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    }
   }).then((response) => response.json())
   .then((data) => {
       console.log(data);

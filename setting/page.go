@@ -32,19 +32,31 @@ func HandleRead(inputs server.Input) (o server.Output) {
 	}
 }
 
+type SettingsInput struct {
+	AboutTitle            string
+	AboutText             string
+	VideosCountOnMainPage string
+}
+
 func HandlePersist(inputs server.Input) (o server.Output) {
-	setting := Settings{
-		AboutTitle: inputs.Get("about-title"),
-		AboutText:  inputs.Get("about-text"),
-	}
+	setting := SettingsInput{}
 
-	videosCount := inputs.Get("videos-count")
-
-	videosCountInt, err := strconv.Atoi(videosCount)
+	err := inputs.Scan(&setting)
 	if err != nil {
 		return server.Output{
 			Data: server.JsonError{
-				Error: fmt.Sprintf("invalid number provided for videos count: %s", videosCount),
+				Error: err.Error(),
+				Code:  400,
+			},
+			Code: 400,
+		}
+	}
+
+	videosCountInt, err := strconv.Atoi(setting.VideosCountOnMainPage)
+	if err != nil {
+		return server.Output{
+			Data: server.JsonError{
+				Error: fmt.Sprintf("invalid number provided for videos count: %s", setting.VideosCountOnMainPage),
 				Code:  400,
 			},
 			Code: 400,
@@ -65,10 +77,14 @@ func HandlePersist(inputs server.Input) (o server.Output) {
 		}
 	}
 
-	setting.VideosCountOnMainPage = uint(videosCountInt)
+	settingToSave := Settings{
+		AboutTitle: setting.AboutTitle,
+		AboutText:  setting.AboutText,
+	}
+	settingToSave.VideosCountOnMainPage = uint(videosCountInt)
 
 	repo := NewRepository()
-	err = repo.Persist(setting)
+	err = repo.Persist(settingToSave)
 	if err != nil {
 		return server.Output{
 			Data: server.JsonError{
