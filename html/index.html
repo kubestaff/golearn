@@ -139,19 +139,23 @@
                 <h1>Settings</h1>
                 <form id="setting-form">
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        <label for="aboutTitle" class="form-label">About Title</label>
+                        <input type="text" class="form-control" id="aboutTitleInput" name="about-title">
+                        <div id="aboutTitleDescription" class="form-text">Title of the about text block from the sandwich menu</div>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
+                        <label for="aboutText" class="form-label">About Text</label>
+                        <textarea class="form-control" id="aboutTextInput" rows="3" name="about-text"></textarea>
                     </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    <div class="mb-3">
+                        <label for="videosCountOnMainPage" class="form-label">Videos Count</label>
+                        <input type="number" class="form-control is-invalid" id="videosCountOnMainPageInput" name="videos-count" min="1" max="100">
+                        <div class="invalid-feedback">
+                            Please provide a valid number.
+                          </div>
+                        <div id="videosCountOnMainPageDescription" class="form-text">Videos count on the main page</div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-primary" id="save-settings-button">Save</button>
                 </form>
             </div>
         </div>
@@ -167,7 +171,7 @@
         </div>
     </footer>
     <script src="/static/js/bootstrap.bundle.min.js"></script>
-    <script src="/static/js/main.js?version=0.0.2"></script>
+    <script src="/static/js/main.js?version=0.0.3"></script>
 </body>
 
 </html>
