@@ -3,6 +3,7 @@ package setting
 import (
 	"fmt"
 	"strconv"
+
 	"github.com/kubestaff/web-helper/server"
 )
 
@@ -12,10 +13,29 @@ type SavingSuccess struct {
 	Message string
 }
 
+func HandleRead(inputs server.Input) (o server.Output) {
+	repo := NewRepository()
+	settings, err := repo.GetOne()
+	if err != nil {
+		return server.Output{
+			Data: server.JsonError{
+				Error: err.Error(),
+				Code:  500,
+			},
+			Code: 500,
+		}
+	}
+
+	return server.Output{
+		Data: settings,
+		Code: 200,
+	}
+}
+
 func HandlePersist(inputs server.Input) (o server.Output) {
 	setting := Settings{
 		AboutTitle: inputs.Get("about-title"),
-		AboutText: inputs.Get("about-text"),
+		AboutText:  inputs.Get("about-text"),
 	}
 
 	videosCount := inputs.Get("videos-count")
@@ -30,7 +50,7 @@ func HandlePersist(inputs server.Input) (o server.Output) {
 			Code: 400,
 		}
 	}
-	
+
 	if videosCountInt < 0 {
 		videosCountInt *= -1
 	}

@@ -20,7 +20,8 @@ func main() {
 	s.Handle("/user", user.Handle)
 	s.Handle("/changeuser", user.HandleChange)
 	s.HandleJSON("/videos", video.HandleList)
-	s.HandleJSON("/add-settings", setting.HandlePersist)
+	s.HandleJSON("/persist-settings", setting.HandlePersist)
+	s.HandleJSON("/settings", setting.HandleRead)
 
 	// we start the webserver don't put any code after it
 	s.Start()
