@@ -58,29 +58,14 @@ function onSettingsLinkClick() {
 }
 
 function getDurationText(durationSeconds) {
-  const secondsInMinute = 60;
-  let secondText = "second";
+  const minutes = Math.floor((durationSeconds % 3600) / 60);
+  const remainingSeconds = Math.floor(durationSeconds % 60);
 
-  if (durationSeconds == 0) {
-    return "";
-  }
-  if (durationSeconds == 1) {
-    return joinText([durationSeconds, secondText]);
-  }
+  const minuteStr = minutes > 0 ? minutes + "m " : "";
+  const secondStr = remainingSeconds != 0 ? remainingSeconds + "s" : "";
 
-  if (durationSeconds < secondsInMinute) {
-    secondText += "s";
-    return joinText([durationSeconds, secondText]);
-  }
-
-  let minuteText = "minute";
-  const durationMinutes = Math.floor(durationSeconds / 60);
-  if (durationMinutes == 1) {
-    return joinText([durationMinutes, minuteText]);
-  }
-
-  minuteText += "s";
-  return joinText([durationMinutes, minuteText]);
+  return minuteStr + secondStr;
+  
 }
 
 function joinText(textItems) {
