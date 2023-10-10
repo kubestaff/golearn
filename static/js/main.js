@@ -61,8 +61,22 @@ function getDurationText(durationSeconds) {
   const minutes = Math.floor((durationSeconds % 3600) / 60);
   const remainingSeconds = Math.floor(durationSeconds % 60);
 
-  const minuteStr = minutes > 0 ? minutes + "m " : "";
-  const secondStr = remainingSeconds != 0 ? remainingSeconds + "s" : "";
+  let minuteStr
+  let secondStr
+
+  if (minutes > 0) {
+    minuteStr = minutes + "m "
+  } else {
+    minuteStr = ""
+  }
+
+  if (remainingSeconds != 0) {
+    secondStr = remainingSeconds + "s"
+  } else {
+    secondStr = ""
+  }
+
+
 
   return minuteStr + secondStr;
   
