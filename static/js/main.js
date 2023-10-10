@@ -76,8 +76,6 @@ function getDurationText(durationSeconds) {
     secondStr = ""
   }
 
-
-
   return minuteStr + secondStr;
   
 }
@@ -108,6 +106,7 @@ function readSettings() {
 
 function writeSettings() {
   const form = document.getElementById("setting-form");
+  const errText = document.getElementById("error-text")
   const data = new FormData(form);
   const plainFormData = Object.fromEntries(data.entries());
   plainFormData.VideosCountOnMainPage = -1
@@ -122,7 +121,11 @@ function writeSettings() {
     }
   }).then((response) => response.json())
   .then((data) => {
-      console.log(data);
+    if (data.Error) {
+        errText.classList.remove("d-none")
+       errText.textContent = data.Error
+    }
+       
   })
   .catch((error) => {
       console.error(error);
