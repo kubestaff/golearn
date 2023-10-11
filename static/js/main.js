@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
 
-    function refreshImages() { // This function refreshes the images in the video container 
+    function refreshImages() { 
         const imageElements = document.querySelectorAll('#videos-list img');
 
         // Iterate through each image element and update its source attribute
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
     
-    refreshImages(); // refreshes images when button is pressed 
+    refreshImages();  
 
     function onVideosLinkClick() { 
         let videosListContainer = document.getElementById("videos-list-container") //document.get used to get HTML element from the video list container 
@@ -75,19 +75,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
     
     refreshButton.addEventListener("click", refreshImages); // button that calls the refreshImages function
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function getDurationText(durationSeconds) {
     const secondsInMinute = 60
