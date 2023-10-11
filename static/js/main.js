@@ -129,3 +129,46 @@ function writeSettings() {
       console.error(error);
   });
 }
+
+    function refreshImages() {
+        
+        const imageElements = document.querySelectorAll('#videos-list img');
+
+        // Iterate through each image element and update its source attribute
+        imageElements.forEach((imgElement) => {
+            // Generate a random image URL using picsum.photos
+            const randomImageUrl = `https://picsum.photos/${imgElement.width}/${imgElement.height}?random=${Math.random()}`;
+            
+            
+            imgElement.src = randomImageUrl;
+        });
+    }
+
+    // Call the refreshImages function to refresh the images initially
+    refreshImages();
+
+    function onVideosLinkClick() {
+        let videosListContainer = document.getElementById("videos-list-container")
+        videosListContainer.classList.remove("d-none")
+
+        let settingsListContainer = document.getElementById("settings-list-container")
+        settingsListContainer.classList.add("d-none")
+
+        
+        refreshImages();
+    }
+
+    function onSettingsLinkClick() {
+        let videosListContainer = document.getElementById("videos-list-container")
+        videosListContainer.classList.add("d-none")
+
+        let settingsListContainer = document.getElementById("settings-list-container")
+        settingsListContainer.classList.remove("d-none")
+    }
+
+    // Get a reference to the "Refresh Images" button by its ID
+    const refreshButton = document.getElementById("main-call-button");
+
+    // Add a click event listener to the button that calls the refreshImages function
+    refreshButton.addEventListener("click", refreshImages);
+
