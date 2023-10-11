@@ -3,6 +3,7 @@ package setting
 import (
 	"fmt"
 	"strconv"
+
 	"github.com/kubestaff/web-helper/server"
 )
 
@@ -12,25 +13,56 @@ type SavingSuccess struct {
 	Message string
 }
 
-func HandlePersist(inputs server.Input) (o server.Output) {
-	setting := Settings{
-		AboutTitle: inputs.Get("about-title"),
-		AboutText: inputs.Get("about-text"),
-	}
-
-	videosCount := inputs.Get("videos-count")
-
-	videosCountInt, err := strconv.Atoi(videosCount)
+func HandleRead(inputs server.Input) (o server.Output) {
+	repo := NewRepository()
+	settings, err := repo.GetOne()
 	if err != nil {
 		return server.Output{
 			Data: server.JsonError{
-				Error: fmt.Sprintf("invalid number provided for videos count: %s", videosCount),
+				Error: err.Error(),
+				Code:  500,
+			},
+			Code: 500,
+		}
+	}
+
+	return server.Output{
+		Data: settings,
+		Code: 200,
+	}
+}
+
+type SettingsInput struct {
+	AboutTitle            string
+	AboutText             string
+	VideosCountOnMainPage string
+}
+
+func HandlePersist(inputs server.Input) (o server.Output) {
+	setting := SettingsInput{}
+
+	err := inputs.Scan(&setting)
+	if err != nil {
+		return server.Output{
+			Data: server.JsonError{
+				Error: err.Error(),
 				Code:  400,
 			},
 			Code: 400,
 		}
 	}
-	
+
+	videosCountInt, err := strconv.Atoi(setting.VideosCountOnMainPage)
+	if err != nil {
+		return server.Output{
+			Data: server.JsonError{
+				Error: fmt.Sprintf("invalid number provided for videos count: %s", setting.VideosCountOnMainPage),
+				Code:  400,
+			},
+			Code: 400,
+		}
+	}
+
 	if videosCountInt < 0 {
 		videosCountInt *= -1
 	}
@@ -45,10 +77,14 @@ func HandlePersist(inputs server.Input) (o server.Output) {
 		}
 	}
 
-	setting.VideosCountOnMainPage = uint(videosCountInt)
+	settingToSave := Settings{
+		AboutTitle: setting.AboutTitle,
+		AboutText:  setting.AboutText,
+	}
+	settingToSave.VideosCountOnMainPage = uint(videosCountInt)
 
 	repo := NewRepository()
-	err = repo.Persist(setting)
+	err = repo.Persist(settingToSave)
 	if err != nil {
 		return server.Output{
 			Data: server.JsonError{
