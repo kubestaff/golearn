@@ -21,5 +21,6 @@ COPY --from=build /app/static /app/static
 COPY --from=build /app/html /app/html
 COPY --from=build /app/usersDatabase.json /app/usersDatabase.json
 COPY --from=build /app/videosDatabase.json /app/videosDatabase.json
+COPY --from=build /app/settingsDatabase.json /app/settingsDatabase.json
 
 ENTRYPOINT ["/app/golearn"]
