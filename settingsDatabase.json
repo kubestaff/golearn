@@ -1,1 +1,5 @@
-{"AboutTitle":"mytitle","AboutText":"mytext","VideosCountOnMainPage":10}
+{
+    "AboutTitle": "mytitle",
+    "AboutText": "mytext",
+    "VideosCountOnMainPage": 10
+}

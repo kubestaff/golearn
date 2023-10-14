@@ -10,10 +10,9 @@ import (
 
 func main() {
 	opts := server.Options{Port: 4567}
-	// we create the simplified web server
+
 	s := server.NewServer(opts)
 
-	// we close the server at the end
 	defer s.Stop()
 
 	s.Handle("/", home.Handle)
@@ -23,6 +22,5 @@ func main() {
 	s.HandleJSON("/persist-settings", setting.HandlePersist)
 	s.HandleJSON("/settings", setting.HandleRead)
 
-	// we start the webserver don't put any code after it
 	s.Start()
 }
