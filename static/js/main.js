@@ -20,8 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         videosElement.appendChild(videoItem);
       }
-    })
-    .catch((error) => {
+    }).catch((error) => {
       console.error(error);
     });
 
@@ -111,7 +110,7 @@ function writeSettings() {
   const form = document.getElementById("setting-form");
   const data = new FormData(form);
   const plainFormData = Object.fromEntries(data.entries());
-  plainFormData.VideosCountOnMainPage = -1
+
   const formDataJsonString = JSON.stringify(plainFormData);
 
   fetch("/persist-settings", {
