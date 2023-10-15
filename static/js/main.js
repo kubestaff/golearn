@@ -25,6 +25,33 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error(error);
     });
 
+
+    // Flash message success 
+  const button = document.getElementById("main-call-button");
+  const successAlertPlaceholder = document.getElementById("success-alert-placeholder");
+
+  button.addEventListener("click", function () {
+    // Success alert
+    const successAlert = document.createElement("div");
+    successAlert.classList.add("alert", "alert-success");
+    successAlert.textContent = "Images have been refreshed successfully!";
+
+    successAlertPlaceholder.innerHTML = "";
+    successAlertPlaceholder.appendChild(successAlert);
+
+    // Timer set to 5 seconds
+    setTimeout(function () {
+      successAlertPlaceholder.innerHTML = "";
+    }, 5000);
+  });
+});
+
+
+
+
+
+
+
   let videosLink = document.getElementById("videos-link");
   videosLink.addEventListener("click", onVideosLinkClick);
 
@@ -33,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let saveSettingsButton = document.getElementById("save-settings-button");
   saveSettingsButton.addEventListener("click", writeSettings);
-});
+
 
 function onVideosLinkClick() {
   let videosListContainer = document.getElementById("videos-list-container");
