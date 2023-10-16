@@ -113,13 +113,26 @@
         <div class="album py-5 bg-body-tertiary" id="videos-list-container">
             <div class="container">
                 <h1>Videos list</h1>
+                <div>
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
+                      <div class="placeholder-image-container">
+                        <img src="/static/img/placeholder-image.png" alt="placeholder-image">
+                        <img src="/static/img/placeholder-image.png" alt="placeholder-image">
+                        <img src="/static/img/placeholder-image.png" alt="placeholder-image">
+                        <img src="/static/img/placeholder-image.png" alt="placeholder-image">
+                        <img src="/static/img/placeholder-image.png" alt="placeholder-image">
+                        <img src="/static/img/placeholder-image.png" alt="placeholder-image">
+                        <img src="/static/img/placeholder-image.png" alt="placeholder-image">
+                        <img src="/static/img/placeholder-image.png" alt="placeholder-image">
+                        <img src="/static/img/placeholder-image.png" alt="placeholder-image">
+                      </div> 
+                </div>
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="videos-list">
                     <template id="video-item">
                         <div class="col">
                             <div class="card shadow-sm">
-                                <div class="spinner-border" role="status">
-                                    <span class="visually-hidden">Loading...</span>
-                                  </div>
                                 <img src="/static/img/placeholder-image.png" alt="Placeholder image">
                                 <div class="card-body">
                                     <p class="card-text"></p>
