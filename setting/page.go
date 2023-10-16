@@ -5,6 +5,7 @@ import (
 	"strconv"
 
 	"github.com/kubestaff/web-helper/server"
+	"gorm.io/gorm"
 )
 
 const MaxVideosCountOnMainPage = 100
@@ -13,8 +14,12 @@ type SavingSuccess struct {
 	Message string
 }
 
-func HandleRead(inputs server.Input) (o server.Output) {
-	repo := NewRepository()
+type Handler struct {
+	DbConn *gorm.DB
+}
+
+func (h Handler) Read(inputs server.Input) (o server.Output) {
+	repo := NewRepository(h.DbConn)
 	settings, err := repo.GetOne()
 	if err != nil {
 		return server.Output{
@@ -38,7 +43,7 @@ type SettingsInput struct {
 	VideosCountOnMainPage string
 }
 
-func HandlePersist(inputs server.Input) (o server.Output) {
+func (h Handler) Persist(inputs server.Input) (o server.Output) {
 	setting := SettingsInput{}
 
 	err := inputs.Scan(&setting)
@@ -83,7 +88,7 @@ func HandlePersist(inputs server.Input) (o server.Output) {
 	}
 	settingToSave.VideosCountOnMainPage = uint(videosCountInt)
 
-	repo := NewRepository()
+	repo := NewRepository(h.DbConn)
 	err = repo.Persist(settingToSave)
 	if err != nil {
 		return server.Output{
