@@ -31,6 +31,16 @@ func (h Handler) Read(inputs server.Input) (o server.Output) {
 		}
 	}
 
+	if settings.ID == 0 {
+		return server.Output{
+			Data: server.JsonError{
+				Error: "Settings not found",
+				Code:  404,
+			},
+			Code: 404,
+		}
+	}
+
 	return server.Output{
 		Data: settings,
 		Code: 200,
@@ -103,6 +113,49 @@ func (h Handler) Persist(inputs server.Input) (o server.Output) {
 	return server.Output{
 		Data: SavingSuccess{
 			Message: "Your settings were successfully saved",
+		},
+		Code: 200,
+	}
+}
+
+func (h Handler) Delete(inputs server.Input) (o server.Output) {
+	repo := NewRepository(h.DbConn)
+
+	settings, err := repo.GetOne()
+	if err != nil {
+		return server.Output{
+			Data: server.JsonError{
+				Error: err.Error(),
+				Code:  500,
+			},
+			Code: 500,
+		}
+	}
+
+	if settings.ID == 0 {
+		return server.Output{
+			Data: server.JsonError{
+				Error: "Settings not found",
+				Code:  404,
+			},
+			Code: 404,
+		}
+	}
+
+	err = repo.Delete()
+	if err != nil {
+		return server.Output{
+			Data: server.JsonError{
+				Error: err.Error(),
+				Code:  500,
+			},
+			Code: 500,
+		}
+	}
+
+	return server.Output{
+		Data: SavingSuccess{
+			Message: "Your settings were successfully deleted",
 		},
 		Code: 200,
 	}

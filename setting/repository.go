@@ -1,6 +1,8 @@
 package setting
 
 import (
+	"errors"
+
 	"gorm.io/gorm"
 )
 
@@ -24,5 +26,33 @@ func (r Repository) GetOne() (Settings, error) {
 }
 
 func (r Repository) Persist(setting Settings) (err error) {
+	existingSettings, err := r.GetOne()
+	if err != nil {
+		return err
+	}
+
+	if existingSettings.ID == 0 {
+		r.dbConn.Create(&setting)
+		return nil
+	}
+
+	r.dbConn.Model(&existingSettings).Updates(setting)
+
+	return nil
+}
+
+func (r Repository) Delete() (err error) {
+	existingSettings, err := r.GetOne()
+	if err != nil {
+		return err
+	}
+
+	if existingSettings.ID == 0 {
+		return errors.New("no setting found to be deleted")
+	}
+
+	settn := Settings{}
+	r.dbConn.Unscoped().Delete(&settn, existingSettings.ID)
+
 	return nil
 }

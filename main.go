@@ -35,6 +35,7 @@ func main() {
 	}
 	s.HandleJSON("/persist-settings", settingsHandler.Persist)
 	s.HandleJSON("/settings", settingsHandler.Read)
+	s.HandleJSON("/delete-settings", settingsHandler.Delete)
 
 	s.Start()
 }
