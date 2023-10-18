@@ -94,10 +94,18 @@ function readSettings() {
     .then((response) => response.json())
     .then((data) => {
       let aboutTitleInput = document.getElementById("aboutTitleInput");
-      aboutTitleInput.value = data.AboutTitle;
-
+      if (data.aboutTitleInput.includes("undefined")) {
+        aboutTitleInput.value = ""
+      } else {
+        aboutTitleInput.value = data.AboutTitle;
+      }
+      
       let aboutTextInput = document.getElementById("aboutTextInput");
-      aboutTextInput.value = data.AboutText;
+      if (data.AboutText.includes("undefined")) {
+        aboutTextInput.value = data.AboutText;
+      } else {
+        aboutTextInput.value = data.AboutText;
+      }
 
       let videosCountOnMainPageInput = document.getElementById(
         "videosCountOnMainPageInput"
