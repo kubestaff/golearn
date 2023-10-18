@@ -85,14 +85,41 @@
   border-color: aliceblue;
 }
 
-.placeholder-image-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-}
-
-.placeholder-image-container img {
+.image-container img {
   background-color: #fff;
   border-radius: 10px;
   padding: 2rem 4rem;
+}
+
+.image-placeholder {
+  position: relative;
+}
+
+.image-placeholder img {
+  filter: blur(4px);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 2rem 4rem;
+}
+
+.spinner-overlay {
+  position: absolute;
+  width: 50px; 
+  height: 50px; 
+  top: 50%;
+  left: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.second-row {
+  margin-top: 20px;
 }

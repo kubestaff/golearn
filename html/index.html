@@ -113,23 +113,53 @@
         <div class="album py-5 bg-body-tertiary" id="videos-list-container">
             <div class="container">
                 <h1>Videos list</h1>
-                <div>
-                    <div class="spinner-border" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                      </div>
-                      <div class="placeholder-image-container">
+                <div class="container image-container" id="video-image-placeholders">
+                    <div class="row">
+                    <div class="col image-placeholder">
                         <img src="/static/img/placeholder-image.png" alt="placeholder-image">
+                        <div class="spinner-border spinner-overlay" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+
+                    <div class="col image-placeholder">
                         <img src="/static/img/placeholder-image.png" alt="placeholder-image">
+                        <div class="spinner-border spinner-overlay" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+
+                    <div class="col image-placeholder">
                         <img src="/static/img/placeholder-image.png" alt="placeholder-image">
-                        <img src="/static/img/placeholder-image.png" alt="placeholder-image">
-                        <img src="/static/img/placeholder-image.png" alt="placeholder-image">
-                        <img src="/static/img/placeholder-image.png" alt="placeholder-image">
-                        <img src="/static/img/placeholder-image.png" alt="placeholder-image">
-                        <img src="/static/img/placeholder-image.png" alt="placeholder-image">
-                        <img src="/static/img/placeholder-image.png" alt="placeholder-image">
-                      </div> 
+                        <div class="spinner-border spinner-overlay" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="row second-row">
+                        <div class="col image-placeholder">
+                            <img src="/static/img/placeholder-image.png" alt="placeholder-image">
+                            <div class="spinner-border spinner-overlay" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+    
+                        <div class="col image-placeholder">
+                            <img src="/static/img/placeholder-image.png" alt="placeholder-image">
+                            <div class="spinner-border spinner-overlay" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+    
+                        <div class="col image-placeholder">
+                            <img src="/static/img/placeholder-image.png" alt="placeholder-image">
+                            <div class="spinner-border spinner-overlay" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="videos-list">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 d-none" id="videos-list">
                     <template id="video-item">
                         <div class="col">
                             <div class="card shadow-sm">

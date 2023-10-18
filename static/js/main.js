@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   fetch("/videos")
     .then((response) => response.json())
     .then((data) => {
+      setTimeout(handleSpinners, 1000)
       const videosElement = document.getElementById("videos-list");
       for (var i = 0; i < data.length; i++) {
         var video = data[i];
@@ -146,3 +147,12 @@ function deleteSettings() {
       console.error(error);
   });
 }
+
+function handleSpinners() {
+  const videoImagePlaceholder = document.getElementById("video-image-placeholders")
+  const videosImages = document.getElementById("videos-list")
+
+  videoImagePlaceholder.classList.add("d-none")
+  videosImages.classList.remove("d-none")
+}
+
