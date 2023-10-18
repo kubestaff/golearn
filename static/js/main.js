@@ -129,3 +129,35 @@ function writeSettings() {
       console.error(error);
   });
 }
+
+function changeSucc(){
+  const userForm = document.getElementById("userForm");
+  const messageDiv = document.getElementById("message"):
+
+  userForm.addEventListener("submit", function (e) {
+    e.preventDefault():
+   const surname = document.getElementById("surname").value:
+
+   if (surname == "") {
+    messageDiv.textContent = "Error: Surname cannot be empty.";
+    } else {
+     
+      const url = '/changeuser?surname=${surname' ;
+      fetch(url)
+      .then((respond) => {
+        if (respond.ok){
+          return respond.text();
+        } else {
+          throw new Error("Failed to create the user.");
+        }
+      })
+      .then ((data)=> {
+        messageDiv.textContent = data;
+      })
+      .catch((error) => {
+        messageDiv.textContent = "Error:" + error.message;
+      })
+      
+    }
+  })
+}
