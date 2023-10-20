@@ -1,7 +1,7 @@
 package video
 
 import (
-	"github.com/kubestaff/web-helper/server"
+		"github.com/kubestaff/web-helper/server"
 )
 
 func HandleList(inputs server.Input) (o server.Output) {

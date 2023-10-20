@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
   fetch("/videos")
     .then((response) => response.json())
     .then((data) => {
-      setTimeout(handleSpinners, 1000)
       const videosElement = document.getElementById("videos-list");
       for (var i = 0; i < data.length; i++) {
         var video = data[i];
@@ -21,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         videosElement.appendChild(videoItem);
       }
+      handleSpinners()
     }).catch((error) => {
       console.error(error);
     });
