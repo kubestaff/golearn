@@ -159,13 +159,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="videosCountOnMainPageInput" class="form-label">Videos Count</label>
-                        <input type="number" class="form-control is-invalid" id="videosCountOnMainPageInput" name="VideosCountOnMainPage" min="1" max="100">
-                        <div class="invalid-feedback">
-                            Please provide a valid number.
-                          </div>
+                        <input type="number" class="form-control" id="videosCountOnMainPageInput" name="VideosCountOnMainPage" min="1" max="100">
                         <div id="videosCountOnMainPageDescription" class="form-text">Videos count on the main page</div>
                     </div>
                     <button type="button" class="btn btn-primary" id="save-settings-button">Save</button>
+                    <button type="button" class="btn btn-danger" id="delete-settings-button">Delete</button>
                 </form>
             </div>
         </div>
@@ -181,7 +179,7 @@
         </div>
     </footer>
     <script src="/static/js/bootstrap.bundle.min.js"></script>
-    <script src="/static/js/main.js?version=0.0.3"></script>
+    <script src="/static/js/main.js?version=0.0.4"></script>
 </body>
 
 </html>

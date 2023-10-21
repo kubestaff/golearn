@@ -1,65 +1,58 @@
 package setting
 
 import (
-	"encoding/json"
-	"os"
+	"errors"
+
+	"gorm.io/gorm"
 )
 
-const settingsDatabaseFileName = "settingsDatabase.json"
-
 type Repository struct {
+	dbConn *gorm.DB
 }
 
-func NewRepository() Repository {
-	repo := Repository{}
+func NewRepository(dbConn *gorm.DB) Repository {
+	repo := Repository{
+		dbConn: dbConn,
+	}
 
 	return repo
 }
 
 func (r Repository) GetOne() (Settings, error) {
-	settings, err := r.readFromFile()
-	if err != nil {
-		return Settings{}, err
-	}
+	settn := Settings{}
+	r.dbConn.First(&settn)
 
-	return settings, nil
+	return settn, nil
 }
 
 func (r Repository) Persist(setting Settings) (err error) {
-	err = r.writeToFile(setting)
+	existingSettings, err := r.GetOne()
 	if err != nil {
 		return err
 	}
+
+	if existingSettings.ID == 0 {
+		r.dbConn.Create(&setting)
+		return nil
+	}
+
+	r.dbConn.Model(&existingSettings).Updates(setting)
 
 	return nil
 }
 
-func (r Repository) readFromFile() (Settings, error) {
-	dat, err := os.ReadFile(settingsDatabaseFileName)
-	if err != nil {
-		return Settings{}, err
-	}
-
-	setting := Settings{}
-
-	err = json.Unmarshal(dat, &setting)
-	if err != nil {
-		return Settings{}, err
-	}
-
-	return setting, nil
-}
-
-func (r Repository) writeToFile(setting Settings) error {
-	dat, err := json.Marshal(setting)
+func (r Repository) Delete() (err error) {
+	existingSettings, err := r.GetOne()
 	if err != nil {
 		return err
 	}
 
-	err = os.WriteFile(settingsDatabaseFileName, dat, 0640)
-	if err != nil {
-		return err
+	if existingSettings.ID == 0 {
+		return errors.New("no setting found to be deleted")
 	}
+
+	settn := Settings{}
+	r.dbConn.Unscoped().Delete(&settn, existingSettings.ID)
 
 	return nil
 }

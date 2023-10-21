@@ -20,8 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         videosElement.appendChild(videoItem);
       }
-    })
-    .catch((error) => {
+    }).catch((error) => {
       console.error(error);
     });
 
@@ -61,6 +60,9 @@ document.addEventListener("DOMContentLoaded", function () {
   let saveSettingsButton = document.getElementById("save-settings-button");
   saveSettingsButton.addEventListener("click", writeSettings);
 
+  let deleteSettingsButton = document.getElementById("delete-settings-button");
+  deleteSettingsButton.addEventListener("click", deleteSettings);
+});
 
 function onVideosLinkClick() {
   let videosListContainer = document.getElementById("videos-list-container");
@@ -138,7 +140,7 @@ function writeSettings() {
   const form = document.getElementById("setting-form");
   const data = new FormData(form);
   const plainFormData = Object.fromEntries(data.entries());
-  plainFormData.VideosCountOnMainPage = -1
+
   const formDataJsonString = JSON.stringify(plainFormData);
 
   fetch("/persist-settings", {
@@ -199,3 +201,18 @@ function writeSettings() {
     // Add a click event listener to the button that calls the refreshImages function
     refreshButton.addEventListener("click", refreshImages);
 
+
+function deleteSettings() {
+  fetch("/delete-settings", {
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    }
+  }).then((response) => response.json())
+  .then((data) => {
+      console.log(data);
+  })
+  .catch((error) => {
+      console.error(error);
+  });
+}

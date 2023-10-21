@@ -2,6 +2,9 @@ package main
 
 import (
 	// "github.com/kubestaff/golearn/db"
+	"fmt"
+
+	"github.com/kubestaff/golearn/db"
 	"github.com/kubestaff/golearn/html/home"
 	"github.com/kubestaff/golearn/setting"
 	"github.com/kubestaff/golearn/user"
@@ -12,16 +15,12 @@ import (
 )
 
 func main() {
-
-	// dbConn, err := db.ConnectDb()
-	// if err!= nil {
-	// 	fmt.Println(err)
-	// 	return
-
-	// }
-	
-	// db.Migrate(dbConn)
-
+	dbConn, err := db.ConnectToDb()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	db.Migrate(dbConn)
 
 	opts := server.Options{Port: 4567}
 	// we create the simplified web server
@@ -34,8 +33,13 @@ func main() {
 	s.Handle("/user", user.Handle)
 	s.Handle("/changeuser", user.HandleChange)
 	s.HandleJSON("/videos", video.HandleList)
-	s.HandleJSON("/persist-settings", setting.HandlePersist)
-	s.HandleJSON("/settings", setting.HandleRead)
+
+	settingsHandler := setting.Handler{
+		DbConn: dbConn,
+	}
+	s.HandleJSON("/persist-settings", settingsHandler.Persist)
+	s.HandleJSON("/settings", settingsHandler.Read)
+	s.HandleJSON("/delete-settings", settingsHandler.Delete)
 
 	// we start the webserver don't put any code after it
 	s.Start()

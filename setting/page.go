@@ -5,6 +5,7 @@ import (
 	"strconv"
 
 	"github.com/kubestaff/web-helper/server"
+	"gorm.io/gorm"
 )
 
 const MaxVideosCountOnMainPage = 100
@@ -13,8 +14,12 @@ type SavingSuccess struct {
 	Message string
 }
 
-func HandleRead(inputs server.Input) (o server.Output) {
-	repo := NewRepository()
+type Handler struct {
+	DbConn *gorm.DB
+}
+
+func (h Handler) Read(inputs server.Input) (o server.Output) {
+	repo := NewRepository(h.DbConn)
 	settings, err := repo.GetOne()
 	if err != nil {
 		return server.Output{
@@ -23,6 +28,16 @@ func HandleRead(inputs server.Input) (o server.Output) {
 				Code:  500,
 			},
 			Code: 500,
+		}
+	}
+
+	if settings.ID == 0 {
+		return server.Output{
+			Data: server.JsonError{
+				Error: "Settings not found",
+				Code:  404,
+			},
+			Code: 404,
 		}
 	}
 
@@ -38,7 +53,7 @@ type SettingsInput struct {
 	VideosCountOnMainPage string
 }
 
-func HandlePersist(inputs server.Input) (o server.Output) {
+func (h Handler) Persist(inputs server.Input) (o server.Output) {
 	setting := SettingsInput{}
 
 	err := inputs.Scan(&setting)
@@ -83,7 +98,7 @@ func HandlePersist(inputs server.Input) (o server.Output) {
 	}
 	settingToSave.VideosCountOnMainPage = uint(videosCountInt)
 
-	repo := NewRepository()
+	repo := NewRepository(h.DbConn)
 	err = repo.Persist(settingToSave)
 	if err != nil {
 		return server.Output{
@@ -98,6 +113,49 @@ func HandlePersist(inputs server.Input) (o server.Output) {
 	return server.Output{
 		Data: SavingSuccess{
 			Message: "Your settings were successfully saved",
+		},
+		Code: 200,
+	}
+}
+
+func (h Handler) Delete(inputs server.Input) (o server.Output) {
+	repo := NewRepository(h.DbConn)
+
+	settings, err := repo.GetOne()
+	if err != nil {
+		return server.Output{
+			Data: server.JsonError{
+				Error: err.Error(),
+				Code:  500,
+			},
+			Code: 500,
+		}
+	}
+
+	if settings.ID == 0 {
+		return server.Output{
+			Data: server.JsonError{
+				Error: "Settings not found",
+				Code:  404,
+			},
+			Code: 404,
+		}
+	}
+
+	err = repo.Delete()
+	if err != nil {
+		return server.Output{
+			Data: server.JsonError{
+				Error: err.Error(),
+				Code:  500,
+			},
+			Code: 500,
+		}
+	}
+
+	return server.Output{
+		Data: SavingSuccess{
+			Message: "Your settings were successfully deleted",
 		},
 		Code: 200,
 	}
