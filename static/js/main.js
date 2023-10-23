@@ -1,4 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const defaultPlaceholders = document.getElementById("video-image-placeholders")
+  for (var i=0; i< 6; i++) {
+    const placeholderTemplate = document.getElementById("default-placeholders-images")
+    const defaultPlaceholderItem = placeholderTemplate.content.cloneNode(true)
+
+    defaultPlaceholders.appendChild(defaultPlaceholderItem)
+  } 
   fetch("/videos")
     .then((response) => response.json())
     .then((data) => {

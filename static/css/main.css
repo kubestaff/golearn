@@ -104,8 +104,6 @@ img {
   height: auto;
   object-fit: cover;
   background-color: #fff;
-  border-radius: 10px;
-  padding: 2rem 4rem;
 }
 
 .spinner-overlay {
