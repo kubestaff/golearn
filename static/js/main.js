@@ -123,7 +123,8 @@ function writeSettings() {
       "Content-Type": "application/json",
       "Accept": "application/json"
     }
-  }).then((response) => response.json())
+  })
+    .then((response) => response.json())
     .then((data) => {
       if (data.Error) {
         const invalidInput = document.getElementById(data.FieldId)
