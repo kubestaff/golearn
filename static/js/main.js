@@ -61,6 +61,8 @@ function onSettingsLinkClick() {
 
 function getDurationText(durationSeconds) {
   const secondsInMinute = 60;
+  const remainingSeconds = durationSeconds %60;
+  const minutes = Math.floor(durationSeconds / 60);
   let secondText = "second";
 
   if (durationSeconds == 0) {
