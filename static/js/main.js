@@ -70,7 +70,6 @@ function onSettingsLinkClick() {
 function getDurationText(durationSeconds) {
   const secondsInMinute = 60;
   const remainingSeconds = durationSeconds %60;
-  const minutes = Math.floor(durationSeconds / 60);
   let secondText = "second";
 
   if (durationSeconds == 0) {
@@ -91,8 +90,13 @@ function getDurationText(durationSeconds) {
     return joinText([durationMinutes, minuteText]);
   }
 
-  minuteText += "s";
-  return joinText([durationMinutes, minuteText]);
+  if (durationMinutes > 1) {
+    minuteText += "s";
+    return joinText([durationMinutes, minuteText]);
+  }
+
+  return minuteText + secondText
+  
 }
 
 function joinText(textItems) {
