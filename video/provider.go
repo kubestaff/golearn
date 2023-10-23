@@ -33,4 +33,5 @@ func (p Provider) readFromFile() ([]Video, error) {
 	}
 
 	return videos, nil
+
 }
