@@ -24,10 +24,11 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error(error);
     });
 
-
-    // Flash message success 
-  const button = document.getElementById("main-call-button");
-  const successAlertPlaceholder = document.getElementById("success-alert-placeholder");
+  
+    function FlashMessageSuccess(successBtn, messagePlaceholder) {
+      // Flash message success 
+  const button = document.getElementById(successBtn);
+  const successAlertPlaceholder = document.getElementById(messagePlaceholder);
 
   button.addEventListener("click", function () {
     // Success alert
@@ -43,13 +44,13 @@ document.addEventListener("DOMContentLoaded", function () {
       successAlertPlaceholder.innerHTML = "";
     }, 5000);
   });
-});
+    }
 
+    FlashMessageSuccess("main-call-button", "success-alert-placeholder")
 
+    FlashMessageSuccess("save-settings-button", "confirmationMessage")
 
-
-
-
+    
 
   let videosLink = document.getElementById("videos-link");
   videosLink.addEventListener("click", onVideosLinkClick);
