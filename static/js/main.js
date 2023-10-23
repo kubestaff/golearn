@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Success alert
     const successAlert = document.createElement("div");
     successAlert.classList.add("alert", "alert-success");
-    successAlert.textContent = "Images have been refreshed successfully!";
+    successAlert.textContent = "Successful!";
 
     successAlertPlaceholder.innerHTML = "";
     successAlertPlaceholder.appendChild(successAlert);
