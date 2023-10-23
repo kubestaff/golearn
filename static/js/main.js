@@ -1,4 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const defaultPlaceholders = document.getElementById("video-image-placeholders")
+  for (var i=0; i< 6; i++) {
+    const placeholderTemplate = document.getElementById("default-placeholders-images")
+    const defaultPlaceholderItem = placeholderTemplate.content.cloneNode(true)
+
+    defaultPlaceholders.appendChild(defaultPlaceholderItem)
+  } 
   fetch("/videos")
     .then((response) => response.json())
     .then((data) => {
@@ -20,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         videosElement.appendChild(videoItem);
       }
+      handleSpinners()
     }).catch((error) => {
       console.error(error);
     });
@@ -157,3 +165,12 @@ function deleteSettings() {
       console.error(error);
     });
 }
+
+function handleSpinners() {
+  const videoImagePlaceholder = document.getElementById("video-image-placeholders")
+  const videosImages = document.getElementById("videos-list")
+
+  videoImagePlaceholder.classList.add("d-none")
+  videosImages.classList.remove("d-none")
+}
+
