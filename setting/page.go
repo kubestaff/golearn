@@ -53,6 +53,12 @@ type SettingsInput struct {
 	VideosCountOnMainPage string
 }
 
+type ValidationError struct {
+	Error   string
+	Code    int
+	FieldId string
+}
+
 func (h Handler) Persist(inputs server.Input) (o server.Output) {
 	setting := SettingsInput{}
 
@@ -70,9 +76,10 @@ func (h Handler) Persist(inputs server.Input) (o server.Output) {
 	videosCountInt, err := strconv.Atoi(setting.VideosCountOnMainPage)
 	if err != nil {
 		return server.Output{
-			Data: server.JsonError{
-				Error: fmt.Sprintf("invalid number provided for videos count: %s", setting.VideosCountOnMainPage),
-				Code:  400,
+			Data: ValidationError{
+				Error:   fmt.Sprintf("invalid number provided for videos count: %s", setting.VideosCountOnMainPage),
+				Code:    400,
+				FieldId: "VideosCountOnMainPageInput",
 			},
 			Code: 400,
 		}
@@ -84,9 +91,10 @@ func (h Handler) Persist(inputs server.Input) (o server.Output) {
 
 	if videosCountInt > MaxVideosCountOnMainPage {
 		return server.Output{
-			Data: server.JsonError{
-				Error: fmt.Sprintf("too big number for videos count: %d, max limit is %d", videosCountInt, MaxVideosCountOnMainPage),
-				Code:  400,
+			Data: ValidationError{
+				Error:   fmt.Sprintf("too big number for videos count: %d, max limit is %d", videosCountInt, MaxVideosCountOnMainPage),
+				Code:    400,
+				FieldId: "VideosCountOnMainPageInput",
 			},
 			Code: 400,
 		}

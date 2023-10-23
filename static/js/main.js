@@ -124,12 +124,20 @@ function writeSettings() {
       "Accept": "application/json"
     }
   }).then((response) => response.json())
-  .then((data) => {
+    .then((data) => {
+      if (data.Error) {
+        const invalidInput = document.getElementById(data.FieldId)
+
+        invalidInput.classList.add("is-invalid")
+        const invalidInputError = docutment.getElementById(data.FieldId + "Error")
+        invalidInputError.textContent = data.Error
+        return
+      }
       console.log(data);
-  })
-  .catch((error) => {
+    })
+    .catch((error) => {
       console.error(error);
-  });
+    });
 }
 
 function deleteSettings() {
@@ -139,10 +147,10 @@ function deleteSettings() {
       "Accept": "application/json"
     }
   }).then((response) => response.json())
-  .then((data) => {
+    .then((data) => {
       console.log(data);
-  })
-  .catch((error) => {
+    })
+    .catch((error) => {
       console.error(error);
-  });
+    });
 }
