@@ -95,7 +95,6 @@ function getDurationText(durationSeconds) {
     return joinText([durationMinutes, minuteText]);
   }
 
-  return `${durationSeconds} ${secondText}`;
 
 }
 
