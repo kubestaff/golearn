@@ -141,7 +141,7 @@ function writeSettings() {
     .then((response) => response.json())
     .then((data) => {
       if (data.Error) {
-        const invalidInput = document.getElementById(data.FieldId)
+        const invalidInput = document.getElementById(data.FieldId);
 
         invalidInput.classList.add("is-invalid");
         const invalidInputError = docutment.getElementById(data.FieldId + "Error");
@@ -152,7 +152,7 @@ function writeSettings() {
     })
     .catch((error) => {
       console.error(error);
-  });
+  })
 }
 
 function deleteSettings() {
