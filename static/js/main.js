@@ -143,10 +143,10 @@ function writeSettings() {
       if (data.Error) {
         const invalidInput = document.getElementById(data.FieldId)
 
-        invalidInput.classList.add("is-invalid")
-        const invalidInputError = docutment.getElementById(data.FieldId + "Error")
+        invalidInput.classList.add("is-invalid");
+        const invalidInputError = docutment.getElementById(data.FieldId + "Error");
         invalidInputError.textContent = data.Error
-        return
+        return;
       }
       console.log(data);
     })
