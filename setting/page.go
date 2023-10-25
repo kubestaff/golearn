@@ -79,7 +79,7 @@ func (h Handler) Persist(inputs server.Input) (o server.Output) {
 			Data: ValidationError{
 				Error:   fmt.Sprintf("invalid number provided for videos count: %s", setting.VideosCountOnMainPage),
 				Code:    400,
-				FieldId: "videosCountOnMainPageInputError",
+				FieldId: "videosCountOnMainPageInput",
 			},
 			Code: 400,
 		}

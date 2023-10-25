@@ -144,8 +144,10 @@ function writeSettings() {
         const invalidInput = document.getElementById(data.FieldId);
 
         invalidInput.classList.add("is-invalid");
-        const invalidInputError = docutment.getElementById(data.FieldId + "Error");
-        invalidInputError.textContent = data.Error
+        const invalidInputError = docutment.getElementById(
+          data.FieldId + "Error"
+        );
+        invalidInputError.textContent = data.Error;
         return;
       }
       console.log(data);
