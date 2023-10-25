@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
   const defaultPlaceholders = document.getElementById("video-image-placeholders")
-  for (var i=0; i< 6; i++) {
+  for (var i = 0; i < 6; i++) {
     const placeholderTemplate = document.getElementById("default-placeholders-images")
     const defaultPlaceholderItem = placeholderTemplate.content.cloneNode(true)
 
     defaultPlaceholders.appendChild(defaultPlaceholderItem)
-  } 
+  }
   fetch("/videos")
     .then((response) => response.json())
     .then((data) => {
@@ -69,7 +69,7 @@ function onSettingsLinkClick() {
 
 function getDurationText(durationSeconds) {
   const secondsInMinute = 60;
-  const remainingSeconds = durationSeconds %60;
+  const remainingSeconds = durationSeconds % 60;
   let secondText = "second";
 
   if (durationSeconds == 0) {
@@ -96,7 +96,7 @@ function getDurationText(durationSeconds) {
   }
 
   return minuteText + secondText
-  
+
 }
 
 function joinText(textItems) {
@@ -154,7 +154,7 @@ function writeSettings() {
     })
     .catch((error) => {
       console.error(error);
-  });
+    });
 }
 
 function deleteSettings() {
