@@ -94,7 +94,7 @@ func (h Handler) Persist(inputs server.Input) (o server.Output) {
 			Data: ValidationError{
 				Error:   fmt.Sprintf("too big number for videos count: %d, max limit is %d", videosCountInt, MaxVideosCountOnMainPage),
 				Code:    400,
-				FieldId: "videosCountOnMainPageInputError",
+				FieldId: "videosCountOnMainPageInput",
 			},
 			Code: 400,
 		}
