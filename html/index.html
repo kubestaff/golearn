@@ -113,7 +113,17 @@
         <div class="album py-5 bg-body-tertiary" id="videos-list-container">
             <div class="container">
                 <h1>Videos list</h1>
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="videos-list">
+                <div class="container image-container row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="video-image-placeholders">
+                  <template id="default-placeholders-images">
+                        <div class="col image-placeholder">
+                            <img src="/static/img/placeholder-image.png" alt="placeholder-image">
+                            <div class="spinner-border spinner-overlay" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                  </template>
+                </div>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 d-none" id="videos-list">
                     <template id="video-item">
                         <div class="col">
                             <div class="card shadow-sm">
@@ -169,7 +179,7 @@
         </div>
     </footer>
     <script src="/static/js/bootstrap.bundle.min.js"></script>
-    <script src="/static/js/main.js?version=0.0.4"></script>
+    <script src="/static/js/main.js?version=0.0.5"></script>
 </body>
 
 </html>
