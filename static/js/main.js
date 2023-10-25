@@ -152,7 +152,7 @@ function writeSettings() {
     })
     .catch((error) => {
       console.error(error);
-    });
+  });
 }
 
 function deleteSettings() {
