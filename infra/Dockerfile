@@ -1,4 +1,4 @@
-FROM golang:1.21 AS build
+FROM golang:1.21.3-bullseye AS build
 WORKDIR /app
 
 COPY go.mod go.sum ./
@@ -8,13 +8,9 @@ COPY . .
 
 RUN CGO_ENABLED=0 GOOS=linux go build -o golearn
 
-FROM alpine:latest as app
-RUN apk --no-cache add ca-certificates
+FROM debian:stable-slim as app
 
 WORKDIR /app
-
-RUN addgroup -S app && adduser -S app -G app
-USER app:app
 
 COPY --from=build /app/golearn /app/golearn
 COPY --from=build /app/static /app/static
