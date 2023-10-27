@@ -112,7 +112,7 @@ function getDurationText(durationSeconds) {
   }
 
   // let result = [];
-  let textItems = [];
+  let joinText = [];
   if (durationMinutes > 0) {
     if (durationMinutes > 1) {
       minuteText += "s";
