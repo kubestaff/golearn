@@ -23,10 +23,9 @@ func main() {
 	db.Migrate(dbConn)
 
 	opts := server.Options{Port: 4567}
-	// we create the simplified web server
+
 	s := server.NewServer(opts)
 
-	// we close the server at the end
 	defer s.Stop()
 
 	s.Handle("/", home.Handle)
@@ -41,6 +40,5 @@ func main() {
 	s.HandleJSON("/settings", settingsHandler.Read)
 	s.HandleJSON("/delete-settings", settingsHandler.Delete)
 
-	// we start the webserver don't put any code after it
 	s.Start()
 }
