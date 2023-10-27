@@ -111,27 +111,23 @@ function getDurationText(durationSeconds) {
     return "0 seconds";
   }
 
-  // let result = [];
-  let joinText = [];
+  let result = [];
   if (durationMinutes > 0) {
     if (durationMinutes > 1) {
       minuteText += "s";
     }
-    // result.push(`${durationMinutes} ${minuteText}`);
-    return joinText ([durationMinutes, minuteText]);
+    result.push(`${durationMinutes} ${minuteText}`);
   }
 
   if (remainingSeconds > 0) {
     if (remainingSeconds > 1) {
       secondText += "s";
     }
-    // result.push(`${remainingSeconds} ${secondText}`);
-    return joinText ([remainingSeconds, secondText]);
+    result.push(`${remainingSeconds} ${secondText}`);
+    
   }
-  function joinText(textItems) {
-    return textItems.join(" ");
-  }
-  // return result.join(" ");
+ 
+  return result.join(" ");
 
 }
 
