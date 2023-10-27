@@ -67,37 +67,66 @@ function onSettingsLinkClick() {
   readSettings();
 }
 
+// function getDurationText(durationSeconds) {
+//   const secondsInMinute = 60;
+//   const remainingSeconds = durationSeconds % 60;
+//   let secondText = "second";
+
+//   if (durationSeconds == 0) {
+//     return "";
+//   }
+//   if (durationSeconds == 1) {
+//     return joinText([durationSeconds, secondText]);
+//   }
+
+//   if (durationSeconds < secondsInMinute) {
+//     secondText += "s";
+//     return joinText([durationSeconds, secondText]);
+//   }
+
+//   let minuteText = "minute";
+//   const durationMinutes = Math.floor(durationSeconds / 60);
+//   if (durationMinutes == 1) {
+//     return joinText([durationMinutes, minuteText]);
+//   }
+
+//   if (durationMinutes > 1) {
+//     minuteText += "s";
+//     return joinText([durationMinutes, minuteText]);
+//   }
+
+
+// } function joinText(textItems) {
+//   return textItems.join(" ");
+// }
+
 function getDurationText(durationSeconds) {
   const secondsInMinute = 60;
-  const remainingSeconds = durationSeconds % 60;
+  const remainingSeconds = durationSeconds % secondsInMinute;
+  const durationMinutes = Math.floor(durationSeconds / secondsInMinute);
+  let minuteText = "minute";
   let secondText = "second";
 
-  if (durationSeconds == 0) {
-    return "";
-  }
-  if (durationSeconds == 1) {
-    return joinText([durationSeconds, secondText]);
+  if (durationSeconds === 0) {
+    return "0 seconds";
   }
 
-  if (durationSeconds < secondsInMinute) {
-    secondText += "s";
-    return joinText([durationSeconds, secondText]);
+  let result = [];
+  if (durationMinutes > 0) {
+    if (durationMinutes > 1) {
+      minuteText += "s";
+    }
+    result.push(`${durationMinutes} ${minuteText}`);
   }
 
-  let minuteText = "minute";
-  const durationMinutes = Math.floor(durationSeconds / 60);
-  if (durationMinutes == 1) {
-    return joinText([durationMinutes, minuteText]);
+  if (remainingSeconds > 0) {
+    if (remainingSeconds > 1) {
+      secondText += "s";
+    }
+    result.push(`${remainingSeconds} ${secondText}`);
   }
 
-  if (durationMinutes > 1) {
-    minuteText += "s";
-    return joinText([durationMinutes, minuteText]);
-  }
-
-
-} function joinText(textItems) {
-  return textItems.join(" ");
+  return result.join(" ");
 }
 
 function readSettings() {
