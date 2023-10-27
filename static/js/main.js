@@ -96,9 +96,7 @@ function getDurationText(durationSeconds) {
   }
 
 
-}
-
-function joinText(textItems) {
+} function joinText(textItems) {
   return textItems.join(" ");
 }
 
