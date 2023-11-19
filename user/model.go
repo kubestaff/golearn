@@ -3,6 +3,8 @@ package user
 import (
 	"fmt"
 	"strings"
+	"gorm.io/gorm"
+	
 )
 
 const (
@@ -11,6 +13,7 @@ const (
 )
 
 type User struct {
+	gorm.Model
 	Name         string
 	Surname      string
 	ProfilePic   string
@@ -60,3 +63,9 @@ func (u User) GetEducation() string {
 	fullEducation := strings.Join(u.Education, ",")
 	return fullEducation
 }
+
+
+
+
+	
+
